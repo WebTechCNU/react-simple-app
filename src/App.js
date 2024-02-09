@@ -1,23 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import BudgetList from './components/BudgedList';
+import NewBudget from './components/NewBudget/NewBudget';
+import { useState } from 'react';
 
 function App() {
+  const [budgetList, setBudget] =  useState([
+    {id: 1, text: 'laptop'},
+    {id: 2, text: 'phone'},
+    {id: 3, text: 'paper'}
+  ]);
+
+  const addNewElementHandler = (newElem) => {
+    setBudget([... budgetList, newElem]);
+  }
+
+  console.log(budgetList);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Budget planner: List of expenses</h1>
+      <NewBudget onAddNew={addNewElementHandler} />
+      <BudgetList budget={budgetList} />
     </div>
   );
 }
