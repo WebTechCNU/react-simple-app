@@ -1,20 +1,38 @@
 import './App.css';
 import BudgetList from './components/BudgedList';
 import NewBudget from './components/NewBudget/NewBudget';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function App() {
-  const [budgetList, setBudget] =  useState([
-    {id: 1, text: 'laptop'},
-    {id: 2, text: 'phone'},
-    {id: 3, text: 'paper'}
-  ]);
+  const [budgetList, setBudget] =  useState([]);
 
-  const addNewElementHandler = (newElem) => {
-    setBudget([... budgetList, newElem]);
+  useEffect(() => {
+    const getBudgets = async () => {
+      const response = await fetch('http://localhost:5000/api/budgets');
+
+      const responseData = await response.json();
+
+      setBudget(responseData.budgets)
+    }
+
+    getBudgets();
+  }, []);
+
+
+  const addNewElementHandler = async (newElem) => {
+    const response = await fetch('http://localhost:5000/api/budgets', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newElem)
+    });
+
+    let responseData = await response.json();
+
+    setBudget(responseData.budgets);
   }
 
-  console.log(budgetList);
 
   return (
     <div className="App">

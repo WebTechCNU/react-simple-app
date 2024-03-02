@@ -7,7 +7,7 @@ const NewBudget = props => {
         event.preventDefault();
 
         valueChanged('');
-        props.onAddNew({id: 10, text : inputValue});
+        props.onAddNew({name : inputValue, description: inputValue});
     }
 
     const onChangeHandler = event => {
