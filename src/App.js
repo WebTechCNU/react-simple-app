@@ -12,7 +12,7 @@ function App() {
 
       const responseData = await response.json();
 
-      setBudget(responseData.budgets)
+      setBudget(responseData)
     }
 
     getBudgets();
@@ -30,7 +30,7 @@ function App() {
 
     let responseData = await response.json();
 
-    setBudget(responseData.budgets);
+    setBudget(responseData);
   }
 
 
