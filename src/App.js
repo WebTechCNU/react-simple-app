@@ -1,6 +1,7 @@
 import './App.css';
 import BudgetList from './components/BudgedList';
 import NewBudget from './components/NewBudget/NewBudget';
+import Login from './components/LoginForm'
 import { useState, useEffect } from 'react';
 
 function App() {
@@ -8,7 +9,7 @@ function App() {
 
   useEffect(() => {
     const getBudgets = async () => {
-      const response = await fetch('http://localhost:5000/api/budgets');
+      const response = await fetch('https://chnu-student-interview-preparation.netlify.app/.netlify/functions/listQuestions');
 
       const responseData = await response.json();
 
@@ -20,7 +21,7 @@ function App() {
 
 
   const addNewElementHandler = async (newElem) => {
-    const response = await fetch('http://localhost:5000/api/budgets', {
+    const response = await fetch('https://chnu-student-interview-preparation.netlify.app/.netlify/functions/createQuestion', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -39,6 +40,7 @@ function App() {
       <h1>Budget planner: List of expenses</h1>
       <NewBudget onAddNew={addNewElementHandler} />
       <BudgetList budget={budgetList} />
+      {/* <Login /> */}
     </div>
   );
 }

@@ -1,14 +1,24 @@
-.budget-list{
-    list-style: none;
-  
-  }
-  
-  .budget-list li{
-    border: 1px  transparent;
-    border-radius: 5px;
-    margin: 1rem;
-    padding: 0.75rem;
-    border-radius: 0.25rem;
-    background-color: antiquewhite;
-  }
-  
+.item-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 10px auto;
+}
+
+.item-name {
+  font-weight: bold;
+  font-size: 18px;
+  color: #333;
+  margin-right: 10px;
+}
+
+.item-description {
+  font-size: 14px;
+  color: #666;
+  flex-grow: 1;
+}
