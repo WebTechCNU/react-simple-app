@@ -2,7 +2,7 @@ import React from "react";
 import './BudgetList.css';
 
 const BudgetList = props => {
-
+    console.log(props);
     return (
     <ul className='budget-list'>
         {
