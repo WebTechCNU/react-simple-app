@@ -11,7 +11,7 @@ function App() {
 
   const getBudgets = async (topic) => {
     const responseData = await axios.get(
-      'https://chnu-student-interview-preparation.netlify.app/.netlify/functions/listQuestions?topic=' + topic);
+      `https://chnu-student-interview-preparation.netlify.app/.netlify/functions/listQuestions?topic=${topic}`);
 
     setBudget(responseData.data)
   }
